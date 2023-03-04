@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Recipe Search</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+  <h1>Recipe Search</h1>
+  <form>
+    <label for="ingredient">Enter an ingredient:</label>
+    <input type="text" id="ingredient" name="ingredient">
+    <button id="searchBtn" type="button">Search!</button>
+    <div id="sensitivity-filter">
+      <h2>Sensitivity Filter</h2>
+      <label for="dairy-free">Dairy-free</label>
+      <input type="checkbox" id="dairy-free" name="dairy-free">
+      <label for="gluten-free">Gluten-free</label>
+      <input type="checkbox" id="gluten-free" name="gluten-free">
+    </div>
+  </form>
+
+  <div id="recipes">
+    <script id="recipe-template" type="text/x-handlebars-template">
+      {{#each data}}
+        <div class="recipe-container" data-id={{idMeal}}>
+          <h2>{{title}}</h2>
+          <img class="recipe-image" src="{{thumbnail}}" alt="{{title}}">
+          <p>Ingredients: </p>
+          <ul class="recipe-ingredients"> 
+            {{#each ingredients}}
+              <li>{{this}}</li>
+            {{/each}}
+          </ul>
+          <a href="{{href}}" target="_blank">Watch Video</a>  
+        </div>
+      {{/each}}
+    </div>
+  </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="render.js"></script>
+    <script src="model.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
